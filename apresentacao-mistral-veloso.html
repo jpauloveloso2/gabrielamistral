@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriela Mistral - Elogio às Profissões</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .presentation-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 60px;
+            max-width: 1000px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            display: none;
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-size: 2em;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+            border-left: 4px solid #667eea;
+            padding-left: 15px;
+        }
+
+        p {
+            color: #2c3e50;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            text-align: justify;
+        }
+
+        .author {
+            text-align: center;
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+
+        .text-summary {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .text-title {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: rgba(102, 126, 234, 0.9);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-btn:hover {
+            background: rgba(102, 126, 234, 1);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-btn:disabled {
+            background: rgba(127, 140, 141, 0.5);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #2c3e50;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            backdrop-filter: blur(10px);
+        }
+
+        .quote {
+            font-style: italic;
+            color: #667eea;
+            font-size: 1.1em;
+            margin: 20px 0;
+            padding-left: 20px;
+            border-left: 3px solid #667eea;
+        }
+
+        ul {
+            color: #2c3e50;
+            line-height: 1.8;
+            margin-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #667eea20 0%, #764ba220 100%);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">7</span>
+        </div>
+
+        <!-- Slide 1: Título -->
+        <div class="slide active">
+            <h1>Gabriela Mistral</h1>
+            <h2>Elogio às Profissões</h2>
+            <div class="subtitle">Uma análise de quatro textos sobre trabalho e transcendência</div>
+            <div class="author">João Paulo Fernandes dos Santos Veloso<br>Doutorando em Teologia</div>
+        </div>
+
+        <!-- Slide 2: Corpus -->
+        <div class="slide">
+            <h2>Corpus Analisado</h2>
+            <div class="text-summary">
+                <div class="text-title">1. Sentido del oficio (maio de 1927)</div>
+                <p>Define o artesão como quem trabalha com "alma e sentido". Critica a desvalorização latino-americana dos artesãos e propõe uma "aristocracia dos artesãos".</p>
+            </div>
+            <div class="text-summary">
+                <div class="text-title">2. El sentido de la profesión (maio de 1931)</div>
+                <p>Compara formatura à confirmação sacramental. Profissionais medíocres são "a verdadeira calamidade". Propõe "cruzada interior e exterior" pela dignificação profissional.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Corpus continuação -->
+        <div class="slide">
+            <h2>Corpus Analisado (cont.)</h2>
+            <div class="text-summary">
+                <div class="text-title">3. Sobre el oficio (junho de 1927)</div>
+                <p>O ofício é mais importante que o cônjuge. Critica os "falsos profissionais" na América Latina. Um verdadeiro ferreiro equivale a um verdadeiro médico em dignidade.</p>
+            </div>
+            <div class="text-summary">
+                <div class="text-title">4. El alma en la artesanía (agosto de 1927)</div>
+                <p>Defende que há "alma" no trabalho artesanal. Cita Gibran: <span class="highlight">"o trabalho é o amor tornado visível"</span>.</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Hipótese Central -->
+        <div class="slide">
+            <h2>Hipótese Central</h2>
+            <p>Para Gabriela Mistral, a <span class="highlight">crise social observada em contextos latino-americanos</span> na primeira metade do século XX resulta fundamentalmente da <span class="highlight">ruptura entre trabalho e transcendência</span>, manifestada na desvalorização sistemática dos artesãos e na mercantilização das profissões.</p>
+            
+            <p>Quando o ofício é escolhido conscientemente, exercido com lealdade e aperfeiçoado com disciplina, ele se torna <span class="highlight">princípio de pacificação social</span>.</p>
+            
+            <p>A dignificação das profissões constitui-se como uma <span class="highlight">via não violenta de reforma social</span> na América Latina.</p>
+        </div>
+
+        <!-- Slide 5: Primeira Linha Argumentativa -->
+        <div class="slide">
+            <h2>Primeira Linha Argumentativa</h2>
+            <h3>Crítica à industrialização que mediocriza as profissões</h3>
+            
+            <p>Mistral identifica na industrialização latino-americana um <span class="highlight">processo desumanizador</span> que rompe a conexão entre fazer e ser.</p>
+            
+            <div class="quote">
+                "Confundimos artesano con peón, hortelano con 'regador', herrero con forjador"
+            </div>
+            
+            <p>Resultado: uma sociedade de <span class="highlight">"falsos construtores, falsos marinheiros e falsos professores"</span> - profissionais tecnicamente funcionais mas moralmente medíocres.</p>
+        </div>
+
+        <!-- Slide 6: Segunda Linha Argumentativa -->
+        <div class="slide">
+            <h2>Segunda Linha Argumentativa</h2>
+            <h3>A dimensão sacramental do trabalho</h3>
+            
+            <p>Mistral estabelece uma <span class="highlight">filosofia teológica do trabalho</span> onde cada profissão constitui vocação divina.</p>
+            
+            <div class="quote">
+                "A ceremonia de este día [...] es más una confirmación que un bautismo"
+            </div>
+            
+            <p>O trabalho é concebido como <span class="highlight">uma forma concreta de amar</span>.</p>
+            
+            <p>Contraria tanto o materialismo marxista quanto o utilitarismo liberal.</p>
+        </div>
+
+        <!-- Slide 7: Terceira Linha Argumentativa -->
+        <div class="slide">
+            <h2>Terceira Linha Argumentativa</h2>
+            <h3>Proposta de uma aristocracia técnica</h3>
+            
+            <p>Reorganização social baseada na <span class="highlight">excelência moral-profissional</span>, substituindo privilégios de nascimento pela dignidade do trabalho.</p>
+            
+            <div class="quote">
+                "Vamos caminando hacia la formación de una aristocracia de técnica que ascenderá sin más presión que la capacidad"
+            </div>
+            
+            <p>Um verdadeiro ferreiro equivale a um verdadeiro médico por compartilharem <span class="highlight">compromisso ético</span> com a perfeição de seus ofícios.</p>
+            
+            <p>A "cruzada interior e exterior" visa criar uma aristocracia de trabalhadores pelo viés da excelência moral e profissional, fator que poderia realizar <span class="highlight">uma reforma social pela via pacífica</span>.</p>
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn" id="prev-btn" onclick="previousSlide()">← Anterior</button>
+            <button class="nav-btn" id="next-btn" onclick="nextSlide()">Próximo →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            
+            document.getElementById('current-slide').textContent = n + 1;
+            
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = (n === 0);
+            document.getElementById('next-btn').disabled = (n === totalSlides - 1);
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+    </script>
+</body>
+</html>
